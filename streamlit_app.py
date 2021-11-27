@@ -8,10 +8,13 @@ import settings
 import streamlit as st
 from streamlit_folium import folium_static 
 import json
+import os
 
 
 #Connecting TO MYSQL Database and Importing Data
-
+DB_USER= st.secrets["DB_USER"]
+DB_PASSWORD=st.secrets["DB_PASSWORD"]
+HOST=st.secrets["HOST"]
 
 mydb = con.connect(user = DB_USER, password =DB_PASSWORD, host =DB_HOST, port = '3306')
 
