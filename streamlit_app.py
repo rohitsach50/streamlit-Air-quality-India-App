@@ -8,8 +8,7 @@ from IPython.display import display
 import streamlit as st
 from streamlit_folium import folium_static 
 import json
-import math
-import base64
+
 
 #Connecting TO MYSQL Database and Importing Data
 # mydb = con.connect(user = 'root', password = 'Qwerty@01893252079', host = 'localhost', port = '3306')
