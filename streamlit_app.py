@@ -14,7 +14,7 @@ import os
 #Connecting TO MYSQL Database and Importing Data
 DB_USER= st.secrets["DB_USER"]
 DB_PASSWORD=st.secrets["DB_PASSWORD"]
-DB_HOST=st.secrets["HOST"]
+DB_HOST=st.secrets["DB_HOST"]
 
 mydb = con.connect(user = DB_USER, password =DB_PASSWORD, host =DB_HOST, port = '3306')
 
