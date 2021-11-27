@@ -25,7 +25,7 @@ current_data=cur.fetchall()
 col=['Station','PM25','Date','State','Latitude','Longitude']
 current_data=pd.DataFrame(data=current_data,columns=col)
 current_data = current_data.astype({'Latitude': np.float,'Longitude': np.float,'PM25':np.float})
-india_states = json.load(open('states_india.geojson','r'))
+# india_states = json.load(open('states_india.geojson','r'))
 
 # Code for Streamlit App
 st.set_page_config(layout="wide")
@@ -41,7 +41,7 @@ choice = col1.selectbox("Select UT/State", states,index=17)
 
 
 m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
-folium.GeoJson(india_states, name="geojson").add_to(m)
+# folium.GeoJson(india_states, name="geojson").add_to(m)
 last_update=current_data['Date'][0]
 col3.title(last_update)
 
