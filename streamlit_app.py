@@ -4,16 +4,16 @@ import pandas as pd
 import numpy as np
 from folium import FeatureGroup
 from folium.plugins import MarkerCluster
-from IPython.display import display
+
 import streamlit as st
 from streamlit_folium import folium_static 
 import json
 
 
 #Connecting TO MYSQL Database and Importing Data
-# mydb = con.connect(user = 'root', password = 'Qwerty@01893252079', host = 'localhost', port = '3306')
 
-mydb = con.connect(user = 'admin', password = '01893252079', host = 'rds-dex.chn47cvaqxt9.ap-south-1.rds.amazonaws.com', port = '3306')
+
+mydb = con.connect(user = DB_USER, password =DB_PASSWORD, host =DB_HOST, port = '3306')
 
 cur = mydb.cursor()
 cur.execute("use test_db;")
@@ -73,4 +73,4 @@ with col2:
 m.save("first.html")
 mydb.close()
 
-# 6200766684-salim
+
