@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from folium import FeatureGroup
 from folium.plugins import MarkerCluster
-import settings
+
 import streamlit as st
 from streamlit_folium import folium_static 
 import json
