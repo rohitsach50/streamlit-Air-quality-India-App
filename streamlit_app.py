@@ -43,14 +43,16 @@ col2.write("Air Quality Of India")
 choice = col1.selectbox("Select UT/State", states)
 
 
-m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
+
 
 last_update=current_data['Date'][0]
 col3.title(last_update)
 
 for i, row in data.iterrows():
     if choice==row.State:
-        folium.Map(location=[row.Latitude, row.Longitude], zoom_start=7,control_scale=True)
+        m = folium.Map(location=[row.Latitude, row.Longitude], zoom_start=7,control_scale=True)
+    else:
+        m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
           
 
 markerCluster = MarkerCluster().add_to(m)
