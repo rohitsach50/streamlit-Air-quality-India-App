@@ -33,7 +33,7 @@ state_dict={}
 states=[]
 for i in india_states['features']:
     states.append(i['properties']['st_nm'])
-    state_dict[i['properties']['st_nm']]=str("{'type': 'FeatureCollection', 'features': [{") + str(i) + str('}]}')
+    state_dict[i['properties']['st_nm']]=str({'type': 'FeatureCollection', 'features': [{) + str(i) + str('}]}')
 
 
 # Code for Streamlit App
@@ -44,8 +44,8 @@ col1,col2,col3 = st.columns((1,4,1))
 
 col2.write("Air Quality Of India")
 choice = col1.selectbox("Select UT/State", states,index=17)
-with choice:
-    folium.GeoJson(state_dict[choice], name="geojson").add_to(m)
+# with choice:
+#     folium.GeoJson(state_dict[choice], name="geojson").add_to(m)
 # if choice == "Delhi":
 #     col3.write("test successful")
 
