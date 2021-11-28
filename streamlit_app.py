@@ -32,7 +32,7 @@ india_states = json.load(open('states_india.geojson','r'))
 state_dict={}
 states=[]
 for i in india_states['features']:
-    states.append(i['properties']['st_nm']])
+    states.append(i['properties']['st_nm'])
     state_dict[i['properties']['st_nm']]=i['geometry']['coordinates']
 
 
