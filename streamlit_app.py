@@ -50,7 +50,7 @@ col3.title(last_update)
 
 for i, row in data.iterrows():
     if choice==row.State:
-        m = folium.Map(location=[row.Latitude, row.Longitude], zoom_start=7,control_scale=True)
+        m = folium.Map(location=[row.Latitude, row.Longitude], zoom_start=12,control_scale=True)
     else:
         m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
           
