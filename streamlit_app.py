@@ -45,7 +45,7 @@ col1,col2,col3 = st.columns((1,4,1))
 col2.write("Air Quality Of India")
 choice = col1.selectbox("Select UT/State", states,index=17)
 with choice:
-    folium.GeoJson(state_dict[choice], name="geojson").add_to(m)
+    folium.map(location=state_dict[choice],zoom_start=4,control_scale=True).add_to(m)
 # if choice == "Delhi":
 #     col3.write("test successful")
 
