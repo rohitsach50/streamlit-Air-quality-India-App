@@ -48,7 +48,7 @@ with choice:
             break
         
         # print(data.loc[row,"Longitude"])
-        print (row.State)
+        # print (row.State)
 
 
 m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
