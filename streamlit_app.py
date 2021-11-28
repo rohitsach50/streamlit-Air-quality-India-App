@@ -33,7 +33,7 @@ state_dict={}
 states=[]
 for i in india_states['features']:
     states.append(i['properties']['st_nm'])
-    state_dict[i['properties']['st_nm']]=str({'type': 'FeatureCollection', 'features': [{) + str(i) + str('}]}')
+    # state_dict[i['properties']['st_nm']]=str({'type': 'FeatureCollection', 'features': [{) + str(i) + str('}]}')
 
 
 # Code for Streamlit App
