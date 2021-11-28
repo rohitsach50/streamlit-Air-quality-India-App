@@ -27,9 +27,18 @@ current_data=pd.DataFrame(data=current_data,columns=col)
 current_data = current_data.astype({'Latitude': np.float,'Longitude': np.float,'PM25':np.float})
 # india_states = json.load(open('states_india.geojson','r'))
 
+
+india_states = json.load(open('states_india.geojson','r'))
+state_dict={}
+states=[]
+for i in india_states['features']:
+    states.append(i['properties']['st_nm']])
+    state_dict[i['properties']['st_nm']]=i['geometry']['coordinates']
+
+
 # Code for Streamlit App
 st.set_page_config(layout="wide")
-states= [x for x in current_data['State'].unique()] 
+# states= [x for x in current_data['State'].unique()] 
 
 col1,col2,col3 = st.columns((1,4,1))
 
