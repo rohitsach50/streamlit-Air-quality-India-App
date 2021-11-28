@@ -25,34 +25,34 @@ current_data=cur.fetchall()
 col=['Station','PM25','Date','State','Latitude','Longitude']
 current_data=pd.DataFrame(data=current_data,columns=col)
 current_data = current_data.astype({'Latitude': np.float,'Longitude': np.float,'PM25':np.float})
-# india_states = json.load(open('states_india.geojson','r'))
 
 
-india_states = json.load(open('states_india.geojson','r'))
-state_dict={}
-states=[]
-for i in india_states['features']:
-    states.append(i['properties']['st_nm'])
-    # state_dict[i['properties']['st_nm']]=str({'type': 'FeatureCollection', 'features': [{) + str(i) + str('}]}')
+
+
+states_data=pd.read_csv("state wise centroids_2011.csv")
+states=[x for x in states_data['State']]
 
 
 # Code for Streamlit App
 st.set_page_config(layout="wide")
-# states= [x for x in current_data['State'].unique()] 
+ 
 
 col1,col2,col3 = st.columns((1,4,1))
 
 col2.write("Air Quality Of India")
 choice = col1.selectbox("Select UT/State", states,index=17)
-# with choice:
-#     folium.GeoJson(state_dict[choice], name="geojson").add_to(m)
-# if choice == "Delhi":
-#     col3.write("test successful")
-
+with choice:
+    for i, row in data.iterrows():
+        if choice==row.State:
+            folium.Map(location=[row.Latitude, row.Longitude], zoom_start=7,control_scale=True)
+            break
+        
+        # print(data.loc[row,"Longitude"])
+        print (row.State)
 
 
 m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
-# folium.GeoJson(india_states, name="geojson").add_to(m)
+
 last_update=current_data['Date'][0]
 col3.title(last_update)
 
