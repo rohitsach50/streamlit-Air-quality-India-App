@@ -45,7 +45,7 @@ with choice:
     for i, row in data.iterrows():
         if choice==row.State:
             folium.Map(location=[row.Latitude, row.Longitude], zoom_start=7,control_scale=True)
-            break
+          
         
         # print(data.loc[row,"Longitude"])
         # print (row.State)
