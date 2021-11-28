@@ -40,15 +40,7 @@ st.set_page_config(layout="wide")
 col1,col2,col3 = st.columns((1,4,1))
 
 col2.write("Air Quality Of India")
-choice = col1.selectbox("Select UT/State", states,index=17)
-with choice:
-    for i, row in data.iterrows():
-        if choice==row.State:
-            folium.Map(location=[row.Latitude, row.Longitude], zoom_start=7,control_scale=True)
-          
-        
-        # print(data.loc[row,"Longitude"])
-        # print (row.State)
+choice = col1.selectbox("Select UT/State", states)
 
 
 m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
@@ -56,6 +48,10 @@ m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
 last_update=current_data['Date'][0]
 col3.title(last_update)
 
+for i, row in data.iterrows():
+    if choice==row.State:
+        folium.Map(location=[row.Latitude, row.Longitude], zoom_start=7,control_scale=True)
+          
 
 markerCluster = MarkerCluster().add_to(m)
 for i, row in current_data.iterrows():
