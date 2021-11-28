@@ -29,7 +29,7 @@ current_data = current_data.astype({'Latitude': np.float,'Longitude': np.float,'
 
 
 
-states_data=pd.read_csv("state wise centroids_2011.csv")
+data=pd.read_csv("state wise centroids_2011.csv")
 states=[x for x in states_data['State']]
 
 
