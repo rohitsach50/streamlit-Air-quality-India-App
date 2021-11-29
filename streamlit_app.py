@@ -47,7 +47,7 @@ choice = col1.selectbox("Select UT/State", states,index=0)
 
 
 c = current_data['Date'][0]
-col3.markdown("""## *Last updated at *""",unsafe_allow_html=True)
+col3.markdown("""###*Last updated at* """,unsafe_allow_html=True)
 col3.write(c)
 
 
