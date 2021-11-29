@@ -21,6 +21,7 @@ MAPBOX_KEY=st.secrets["MAPBOX_KEY"]
 
 mydb = con.connect(user = DB_USER, password =DB_PASSWORD, host =DB_HOST, port = '3306')
 px.set_mapbox_access_token(MAPBOX_KEY)
+
 cur = mydb.cursor()
 cur.execute("use test_db;")
 cur.execute("select a.Station_Name,a.PM25,a.Date,c.State,c.Latitude,c.Longitude from air_quality_info as a,city_info as c where a.Station_Name=c.Station_Name and a.Date = (select max(Date) TOday from air_quality_info as a)")
@@ -28,8 +29,6 @@ current_data=cur.fetchall()
 col=['Station','PM25','Date','State','Latitude','Longitude']
 current_data=pd.DataFrame(data=current_data,columns=col)
 current_data = current_data.astype({'Latitude': np.float,'Longitude': np.float,'PM25':np.float})
-
-
 
 
 data=pd.read_csv("state wise centroids_2011.csv")
@@ -44,7 +43,7 @@ st.set_page_config(layout="wide")
 col1,col2,col3 = st.columns((1,4,1))
 
 col2.write("Air Quality Of India")
-choice = col1.selectbox("Select UT/State", states)
+choice = col1.selectbox("Select UT/State", states,index=0)
 
 
 last_update=current_data['Date'][0]
@@ -57,7 +56,7 @@ for i, row in data.iterrows():
         
           
 m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
-markerCluster = MarkerCluster().add_to(m)
+markerCluster = MarkerCluster()
 for i, row in current_data.iterrows():
     lat = current_data.loc[i,'Latitude']
     lng = current_data.loc[i,'Longitude']
@@ -88,10 +87,12 @@ for i, row in current_data.iterrows():
 if choice:
     if choice in state_dict:
         m2 = folium.Map(location=state_dict[choice], zoom_start=7,control_scale=True)
+        markerCluster.add_to(m2)
         with col2:
             folium_static(m2)
     else:
         with col2:
+            markerCluster.add_to(m)
             folium_static(m)
 
 
