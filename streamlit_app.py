@@ -46,8 +46,8 @@ col2.markdown(#***Air Quality Of India***)
 choice = col1.selectbox("Select UT/State", states,index=0)
 
 
-last_update = current_data['Date'][0]
-col3.title(last_update)
+c = current_data['Date'][0]
+col3.title(c)
 state_dict={}
 
 for i, row in data.iterrows():
