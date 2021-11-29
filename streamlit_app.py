@@ -42,7 +42,7 @@ st.set_page_config(layout="wide")
 
 col1,col2,col3 = st.columns((1,4,1))
 
-col2.markdown("""# ***Air Quality Of India***"""")
+col2.markdown("""# ***Air Quality Of India***""",unsafe_allow_html=True)
 choice = col1.selectbox("Select UT/State", states,index=0)
 
 
