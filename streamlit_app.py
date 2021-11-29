@@ -48,10 +48,11 @@ choice = col1.selectbox("Select UT/State", states)
 
 last_update=current_data['Date'][0]
 col3.title(last_update)
+if choice:
 
-for i, row in data.iterrows():
-    if choice==row.State:
-        col3.folium.Map(location=[row.Latitude, row.Longitude], zoom_start=12,control_scale=True)
+    for i, row in data.iterrows():
+        if choice==row.State:
+            col2.folium.Map(location=[row.Latitude, row.Longitude], zoom_start=12,control_scale=True)
     
         
           
