@@ -37,7 +37,7 @@ states=[x for x in data['State']]
 st.set_page_config(layout="wide")
  
 
-col1,col2,col3 = st.columns((1,4,1))
+col1,col2,col3 = st.columns((1,3,1))
 
 col2.write("Air Quality Of India")
 choice = col1.selectbox("Select UT/State", states)
