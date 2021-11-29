@@ -9,9 +9,9 @@ import streamlit as st
 from streamlit_folium import folium_static 
 import json
 import os
-# import plotly.express as px
+import plotly.express as px
 
-# px.set_mapbox_access_token(MAPBOX_KEY)
+px.set_mapbox_access_token(MAPBOX_KEY)
 
 #Connecting TO MYSQL Database and Importing Data
 DB_USER= st.secrets["DB_USER"]
@@ -34,7 +34,7 @@ current_data = current_data.astype({'Latitude': np.float,'Longitude': np.float,'
 data=pd.read_csv("state wise centroids_2011.csv")
 states=[x for x in data['State']]
 states.sort()
-
+states.insert(0,"Select a State")
 
 # Code for Streamlit App
 st.set_page_config(layout="wide")
@@ -52,16 +52,7 @@ state_dict={}
 
 for i, row in data.iterrows():
     
-    state_dict[row.State]=[row.Latitude,row.Longitude]
-
-if choice:
-    if choice in state_dict:
-        m2 = folium.Map(location=state_dict[choice], zoom_start=7,control_scale=True)
-        with col3:
-            folium_static(m2)
-
-
-    
+    state_dict[row.State]=[row.Latitude,row.Longitude]    
         
           
 m = folium.Map(location=[23, 77.216721], zoom_start=4,control_scale=True)
@@ -92,6 +83,14 @@ for i, row in current_data.iterrows():
     folium.Marker(location=[lat, lng],popup=popup,icon=folium.Icon(color=color,icon='map-pin',prefix='fa')).add_to(markerCluster)
 with col2:
     folium_static(m)
+
+
+if choice:
+    if choice in state_dict:
+        m2 = folium.Map(location=state_dict[choice], zoom_start=7,control_scale=True)
+        with col2:
+            folium_static(m2)
+
 
 mydb.close()
 
