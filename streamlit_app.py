@@ -42,11 +42,11 @@ st.set_page_config(layout="wide")
 
 col1,col2,col3 = st.columns((1,4,1))
 
-col2.write(# **_Air Quality Of India_**)
+col2.write(#***Air Quality Of India***)
 choice = col1.selectbox("Select UT/State", states,index=0)
 
 
-last_update=current_data['Date'][0]
+last_update = current_data['Date'][0]
 col3.title(last_update)
 state_dict={}
 
