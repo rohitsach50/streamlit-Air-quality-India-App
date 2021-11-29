@@ -11,15 +11,16 @@ import json
 import os
 import plotly.express as px
 
-px.set_mapbox_access_token(MAPBOX_KEY)
+
 
 #Connecting TO MYSQL Database and Importing Data
 DB_USER= st.secrets["DB_USER"]
 DB_PASSWORD=st.secrets["DB_PASSWORD"]
 DB_HOST=st.secrets["DB_HOST"]
+MAPBOX_KEY=st.secrets["MAPBOX_KEY"]
 
 mydb = con.connect(user = DB_USER, password =DB_PASSWORD, host =DB_HOST, port = '3306')
-
+px.set_mapbox_access_token(MAPBOX_KEY)
 cur = mydb.cursor()
 cur.execute("use test_db;")
 cur.execute("select a.Station_Name,a.PM25,a.Date,c.State,c.Latitude,c.Longitude from air_quality_info as a,city_info as c where a.Station_Name=c.Station_Name and a.Date = (select max(Date) TOday from air_quality_info as a)")
