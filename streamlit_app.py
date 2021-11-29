@@ -51,7 +51,7 @@ for i, row in data.iterrows():
     
     state_dict[row.State]=[row.Latitude,row.Longitude]
 
-with choice:
+if choice:
     if choice in state_dict:
         m2 = folium.Map(location=state_dict[choice], zoom_start=7,control_scale=True)
         with col2:
