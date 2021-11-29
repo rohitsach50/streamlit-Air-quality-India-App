@@ -37,22 +37,27 @@ states=[x for x in data['State']]
 st.set_page_config(layout="wide")
  
 
-col1,col2,col3 = st.columns((1,3,1))
+col1,col2,col3 = st.columns((1,4,1))
 
 col2.write("Air Quality Of India")
 choice = col1.selectbox("Select UT/State", states)
 
 
-
-
-
 last_update=current_data['Date'][0]
 col3.title(last_update)
-if choice:
+state_dict={}
 
-    for i, row in data.iterrows():
-        if choice==row.State:
-            folium_static(col3.folium.Map(location=[row.Latitude, row.Longitude], zoom_start=12,control_scale=True))
+for i, row in data.iterrows():
+    
+    state_dict[row.State]=[row.Latitude,row.Longitude]
+
+with choice:
+    if choice in state_dict:
+        m2 = folium.Map(location=state_dict[choice], zoom_start=7,control_scale=True)
+        with col2:
+            folium_static(m2)
+
+
     
         
           
@@ -84,7 +89,7 @@ for i, row in current_data.iterrows():
     folium.Marker(location=[lat, lng],popup=popup,icon=folium.Icon(color=color,icon='map-pin',prefix='fa')).add_to(markerCluster)
 with col2:
     folium_static(m)
-m.save("first.html")
+
 mydb.close()
 
 
