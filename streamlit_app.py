@@ -42,12 +42,12 @@ st.set_page_config(layout="wide")
 
 col1,col2,col3 = st.columns((1,4,1))
 
-col2.title("""# ***Air Quality Of India***""",unsafe_allow_html=True)
+col2.markdown("""# ***Air Quality Of India***""",unsafe_allow_html=True)
 choice = col1.selectbox("Select UT/State", states,index=0)
 
 
 c = current_data['Date'][0]
-col3.title("""## ***Last updated at ***  """)
+col3.markdown("""## *Last updated at *""",unsafe_allow_html=True)
 col3.write(c)
 
 
