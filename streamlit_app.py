@@ -82,8 +82,7 @@ for i, row in current_data.iterrows():
     else:
         color = 'black'
     folium.Marker(location=[lat, lng],popup=popup,icon=folium.Icon(color=color,icon='map-pin',prefix='fa')).add_to(markerCluster)
-with col2:
-    folium_static(m)
+
 
 
 if choice:
@@ -91,6 +90,9 @@ if choice:
         m2 = folium.Map(location=state_dict[choice], zoom_start=7,control_scale=True)
         with col2:
             folium_static(m2)
+    else:
+        with col2:
+            folium_static(m)
 
 
 mydb.close()
