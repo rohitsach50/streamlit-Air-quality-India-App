@@ -52,7 +52,7 @@ if choice:
 
     for i, row in data.iterrows():
         if choice==row.State:
-            col2.folium.Map(location=[row.Latitude, row.Longitude], zoom_start=12,control_scale=True)
+            folium_static(col3.folium.Map(location=[row.Latitude, row.Longitude], zoom_start=12,control_scale=True))
     
         
           
