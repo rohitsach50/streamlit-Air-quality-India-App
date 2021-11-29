@@ -9,7 +9,8 @@ import streamlit as st
 from streamlit_folium import folium_static 
 import json
 import os
-
+import plotly.express as px
+px.set_mapbox_access_token(MAPBOX_KEY)
 
 #Connecting TO MYSQL Database and Importing Data
 DB_USER= st.secrets["DB_USER"]
@@ -54,7 +55,7 @@ for i, row in data.iterrows():
 if choice:
     if choice in state_dict:
         m2 = folium.Map(location=state_dict[choice], zoom_start=7,control_scale=True)
-        with col2:
+        with col3:
             folium_static(m2)
 
 
